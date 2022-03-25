@@ -162,7 +162,7 @@
 		"connectionType": "cloud",
 		"dataSource": "poll",
         "title": "Oilfox",
-        "version": "3.1.0",
+        "version": "4.0.0",
         "platform": "Javascript/Node.js",
         "mode": "schedule",
         "schedule": "*/59 * * * *",
