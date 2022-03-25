@@ -118,15 +118,15 @@ function createStateObjectsFromResult(summaryObject) {
 		}
 	}
 	let i = 0;
-	for (let p in summaryObject.devices) {
-		for (let pp in summaryObject.devices[p]) {
-			if (typeof summaryObject.devices[p][pp] !== 'object') {
-				promises.push(adapter.setObjectNotExistsAsync('devices.' + i + '.' + pp, {
+	for (let p in summaryObject.items) {
+		for (let pp in summaryObject.items[p]) {
+			if (typeof summaryObject.items[p][pp] !== 'object') {
+				promises.push(adapter.setObjectNotExistsAsync('items.' + i + '.' + pp, {
 					type: 'state',
 					common: {
 						'name': 'device.' + pp,
 						'role': 'state',
-						'type': typeof summaryObject.devices[p][pp],
+						'type': typeof summaryObject.items[p][pp],
 						'write': false,
 						'read': true
 					},
@@ -135,7 +135,7 @@ function createStateObjectsFromResult(summaryObject) {
 			}
 		}
 
-		for (let pp in summaryObject.devices[p].lastMetering) {
+		/*for (let pp in summaryObject.items[p].lastMetering) {
 			if (typeof summaryObject.devices[p].lastMetering[pp] !== 'object') {
 				promises.push(adapter.setObjectNotExistsAsync('devices.' + i + '.metering.' + pp, {
 					type: 'state',
@@ -149,7 +149,7 @@ function createStateObjectsFromResult(summaryObject) {
 					native: {}
 				}));
 			}
-		}
+		}*/
 		i++;
 	}
 	return promises;
