@@ -44,7 +44,7 @@ function connectOilfox() {
 	let request_options = {
 		host: 'api.oilfox.io',
 		port: '443',
-		path: '/v3/login',
+		path: '/customer-api/v1/login',
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ function connectOilfox() {
 			adapter.log.debug("recieved data: " + tokenData);
 			let tokenObject = JSON.parse(tokenData);
 			request_options.headers['Authorization'] = 'Bearer ' + tokenObject.access_token;
-			request_options.path = '/v4/summary';
+			request_options.path = '/customer-api/v1/device';
 			request_options.method = 'GET';
 			let summaryRequest = https.request(request_options, (summaryRequestResult) => {
 				summaryRequestResult.setEncoding('utf8');
