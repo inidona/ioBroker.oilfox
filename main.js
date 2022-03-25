@@ -164,12 +164,12 @@ async function updateStatesFromResult(summaryObject) {
 		}
 
 		
-		for (let p in summaryObject.devices) {
+		for (let p in summaryObject.items) {
 			let state = null;
 			let j = 0;
-			while (j < summaryObject.devices.length) {
-				state = await adapter.getStateAsync('devices.' + j + '.id');
-				if (state != null && (!state.val || state.val == summaryObject.devices[p].id)) {
+			while (j < summaryObject.items.length) {
+				state = await adapter.getStateAsync('items.' + j + '.id');
+				if (state != null && (!state.val || state.val == summaryObject.items[p].id)) {
 					break;
 				}
 				else if (state == null) {
@@ -181,17 +181,17 @@ async function updateStatesFromResult(summaryObject) {
 				j++;
 			}
 			if (state) {
-				for (let pp in summaryObject.devices[p]) {
-					if (typeof summaryObject.devices[p][pp] !== 'object') {
-						adapter.setState('devices.' + j + '.' + pp, summaryObject.devices[p][pp], true);
+				for (let pp in summaryObject.items[p]) {
+					if (typeof summaryObject.items[p][pp] !== 'object') {
+						adapter.setState('devices.' + j + '.' + pp, summaryObject.items[p][pp], true);
 					}
 				}
 
-				for (let pp in summaryObject.devices[p].lastMetering) {
+				/*for (let pp in summaryObject.items[p].lastMetering) {
 					if (typeof summaryObject.devices[p].lastMetering[pp] !== 'object') {
-						adapter.setState('devices.' + j + '.metering.' + pp, summaryObject.devices[p].lastMetering[pp], true);
+						adapter.setState('devices.' + j + '.metering.' + pp, summaryObject.items[p].lastMetering[pp], true);
 					}
-				}
+				}*/
 			}
 		}
 	}
