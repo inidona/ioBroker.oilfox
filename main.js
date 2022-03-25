@@ -135,21 +135,6 @@ function createStateObjectsFromResult(summaryObject) {
 			}
 		}
 
-		/*for (let pp in summaryObject.items[p].lastMetering) {
-			if (typeof summaryObject.devices[p].lastMetering[pp] !== 'object') {
-				promises.push(adapter.setObjectNotExistsAsync('devices.' + i + '.metering.' + pp, {
-					type: 'state',
-					common: {
-						'name': 'device.metering.' + pp,
-						'role': 'state',
-						'type': typeof summaryObject.devices[p].lastMetering[pp],
-						'write': false,
-						'read': true
-					},
-					native: {}
-				}));
-			}
-		}*/
 		i++;
 	}
 	return promises;
@@ -186,12 +171,6 @@ async function updateStatesFromResult(summaryObject) {
 						adapter.setState('items.' + j + '.' + pp, summaryObject.items[p][pp], true);
 					}
 				}
-
-				/*for (let pp in summaryObject.items[p].lastMetering) {
-					if (typeof summaryObject.devices[p].lastMetering[pp] !== 'object') {
-						adapter.setState('devices.' + j + '.metering.' + pp, summaryObject.items[p].lastMetering[pp], true);
-					}
-				}*/
 			}
 		}
 	}
