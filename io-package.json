@@ -152,8 +152,9 @@
       }
     ],
     "adminUI": {
-      "config": "json"
+        "config": "json"
     },
+    "jsonConfig": true,
     "messages": [
       {
         "condition": {
