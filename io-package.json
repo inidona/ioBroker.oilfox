@@ -120,6 +120,7 @@
     "schedule": "*/59 * * * *",
     "icon": "oilfox.png",
     "enabled": true,
+    "materialize":true,
     "messagebox": false,
     "loglevel": "info",
     "keywords": [
